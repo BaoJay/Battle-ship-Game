@@ -8,8 +8,8 @@ let isSunk = false;
 
 while (!isSunk) {
     guess = parseInt(prompt("Enter a guess number"));
-    while (guess < 0 || guess > 7) {
-        guess = parseInt(prompt("Please enter a number between 0 and 7"));
+    while (guess < 0 || guess > 6) {
+        guess = parseInt(prompt("Please enter a number between 0 and 6"));
     }
     totalGuess = totalGuess + 1;
     console.log("Nice try!")

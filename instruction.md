@@ -14,19 +14,20 @@ Declare *isSunk* (boolean value, to check if the hit equals to 3)
 
 Random *theShipLocation*
 WHILE *isSunk* is false (The ship hasn't sunk yet)
-    Guess a number (again) --> store to *guess*
-    IF *guess* is not valid (from 0 to 5)
-        say "Please enter a number between 0 and 5!"
-    ELSE (guess is valid)
-        Count totalGuess + 1
-        IF *guess* === *theShipLocation*
-                *hit* = *hit* + 1
-                say "You hit the ship!"
-                IF *hit* = 3
-                    Set *isSunk* is true
-                    say "The ship is sunk!"
-                End IF
+    Guess a number --> store to *guess*
+    WHILE *guess* is not valid (from 0 to 6)
+        say "Please enter a number between 0 and 6!" --> store to *guess*
+    End WHILE (guess is valid)
+    Count totalGuess + 1
+    say "Nice try!"
+    IF *guess* === *theShipLocation*
+            *hit* = *hit* + 1
+            say "You hit the ship!"
+            IF *hit* = 3
+                Set *isSunk* is true
+                say "The ship is sunk!"
             End IF
+        End IF
     End ELSE
 End WHILE
 Announce the *totalGuess*
