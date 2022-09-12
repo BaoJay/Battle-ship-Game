@@ -5,8 +5,8 @@
 ### START GAME
 Declare *theShipLocation* variable
     location1 = 3
-    location2 = 4
-    location3 = 5
+    location2 = location1 + 1
+    location3 = location1 + 2
 Declare *guess* (which is store the user's input)
 Declare *hit* (value is increase when the guess is matched the ship location)
 Declare *isSunk* (boolean value, to check if the hit equals to 3)
