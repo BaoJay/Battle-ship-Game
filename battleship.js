@@ -1,0 +1,7 @@
+const location1 = 3;
+const location2 = location1 + 1;
+const location3 = location1 + 2;
+let guess;
+let hit = 0;
+let isSunk = false;
+
