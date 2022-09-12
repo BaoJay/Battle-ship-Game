@@ -12,20 +12,21 @@ Declare *hit* (value is increase when the guess is matched the ship location)
 Declare *isSunk* (boolean value, to check if the hit equals to 3)
 
 Random the ship's location
-WHILE isSunk is false (The ship hasn't sunk yet)
-    Guess a number (again) --> store to The number is valid variable.
-    IF The number is valid
-        IF the guess number matches the ship's location
-            Count the HIT (variable) + 1
-            IF the HIT = 3
-                Set isSunk is true (The ship is sunk!)
+WHILE *isSunk* is false (The ship hasn't sunk yet)
+    Guess a number (again) --> store to *guess*
+    IF *guess* is valid (from 0 to 5)
+        IF *guess* === *theShipLocation*
+            *hit* = *hit* + 1
+            IF *hit* = 3
+                Set *isSunk* is true (The ship is sunk!)
             End IF
         End IF
     End IF
 End WHILE
-Announce the total guesses
+Announce the total *guess*
 ### END GAME
 =================================
+
 
              
 
