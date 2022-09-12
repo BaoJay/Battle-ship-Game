@@ -7,20 +7,21 @@ let hit = 0;
 let isSunk = false;
 
 while (!isSunk) {
-    guess = prompt("Enter a guess number");
-    if (guess < 0 && guess > 5) {
-        guess = prompt("Please enter a number between 0 and 5");
-    } else {
-        totalGuess = totalGuess + 1;
-        if (guess === location1 || guess === location2 || guess === location3) {
-            hit = hit + 1;
-            console.log("You hit the ship!")
-            if (hit === 3) {
-                isSunk = true;
-                console.log("The ship is sunk!")
-            }
-        }
-
+    guess = parseInt(prompt("Enter a guess number"));
+    while (guess < 0 || guess > 7) {
+        guess = parseInt(prompt("Please enter a number between 0 and 7"));
     }
+    totalGuess = totalGuess + 1;
+    console.log("Nice try!")
+    if (guess === location1 || guess === location2 || guess === location3) {
+        hit = hit + 1;
+        console.log("You hit the ship!")
+        if (hit === 3) {
+            isSunk = true;
+            console.log("The ship is sunk!")
+        }
+    }
+
+
 }
 console.log("You hit the ship with a number of guesses: ", totalGuess);
