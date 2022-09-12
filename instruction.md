@@ -16,7 +16,7 @@ Random *theShipLocation*
 WHILE *isSunk* is false (The ship hasn't sunk yet)
     Guess a number (again) --> store to *guess*
     IF *guess* is not valid (from 0 to 5)
-        say "You must enter a valid number!"
+        say "Please enter a number between 0 and 5!"
     ELSE (guess is valid)
         Count totalGuess + 1
         IF *guess* === *theShipLocation*
