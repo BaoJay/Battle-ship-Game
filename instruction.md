@@ -11,7 +11,7 @@ Declare *guess* (which is store the user's input)
 Declare *hit* (value is increase when the guess is matched the ship location)
 Declare *isSunk* (boolean value, to check if the hit equals to 3)
 
-Random the ship's location
+Random *theShipLocation*
 WHILE *isSunk* is false (The ship hasn't sunk yet)
     Guess a number (again) --> store to *guess*
     IF *guess* is valid (from 0 to 5)
