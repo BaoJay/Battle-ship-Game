@@ -1,4 +1,4 @@
-const location1 = Math.floor(Math.random() * 6);
+const location1 = Math.floor(Math.random() * 5);
 const location2 = location1 + 1;
 const location3 = location1 + 2;
 let guess;
@@ -18,14 +18,26 @@ while (!isSunk) {
     totalGuess = totalGuess + 1;
 
     if (guess === location1) {
-        alert("Hit!")
-        isHitLocation1 = true;
+        if (isHitLocation1) {
+            alert("You already hit this location!")
+        } else {
+            alert("Hit!")
+            isHitLocation1 = true;
+        }
     } else if (guess === location2) {
-        alert("Hit!")
-        isHitLocation2 = true;
+        if (isHitLocation2) {
+            alert("You already hit this location!")
+        } else {
+            alert("Hit!")
+            isHitLocation2 = true;
+        }
     } else if (guess === location3) {
-        alert("Hit!")
-        isHitLocation3 = true;
+        if (isHitLocation3) {
+            alert("You already hit this location!")
+        } else {
+            alert("Hit!")
+            isHitLocation3 = true;
+        }
     } else {
         alert("Miss!")
     }
