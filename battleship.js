@@ -7,12 +7,12 @@ let hit = 0;
 let isHitLocation1 = false;
 let isHitLocation2 = false;
 let isHitLocation3 = false;
-const isSunk = isHitLocation1 && isHitLocation2 && isHitLocation3;
+let isSunk = false;
 
 alert("Let's play a game call Battle Ship!")
 while (!isSunk) {
     guess = parseInt(prompt("Enter a guess number"));
-    while (guess < 0 || guess > 6) {
+    while (guess < 0 || guess > 6 || guess === '') {
         guess = parseInt(prompt("Please enter a number between 0 and 6"));
     }
     totalGuess = totalGuess + 1;
@@ -29,5 +29,7 @@ while (!isSunk) {
     } else {
         alert("Miss!")
     }
+    isSunk = isHitLocation1 && isHitLocation2 && isHitLocation3
 }
+alert("Congratulations! You won!");
 console.log("You hit the ship with a number of guesses: ", totalGuess);
