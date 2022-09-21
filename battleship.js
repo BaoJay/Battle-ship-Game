@@ -4,24 +4,30 @@ const location3 = location1 + 2;
 let guess;
 let totalGuess = 0;
 let hit = 0;
-let isSunk = false;
+let isHitLocation1 = false;
+let isHitLocation2 = false;
+let isHitLocation3 = false;
+const isSunk = isHitLocation1 && isHitLocation2 && isHitLocation3;
 
+alert("Let's play a game call Battle Ship!")
 while (!isSunk) {
     guess = parseInt(prompt("Enter a guess number"));
     while (guess < 0 || guess > 6) {
         guess = parseInt(prompt("Please enter a number between 0 and 6"));
     }
     totalGuess = totalGuess + 1;
-    console.log("Nice try!")
-    if (guess === location1 || guess === location2 || guess === location3) {
-        hit = hit + 1;
-        console.log("You hit the ship!")
-        if (hit === 3) {
-            isSunk = true;
-            console.log("The ship is sunk!")
-        }
+
+    if (guess === location1) {
+        alert("Hit!")
+        isHitLocation1 = true;
+    } else if (guess === location2) {
+        alert("Hit!")
+        isHitLocation2 = true;
+    } else if (guess === location3) {
+        alert("Hit!")
+        isHitLocation3 = true;
+    } else {
+        alert("Miss!")
     }
-
-
 }
 console.log("You hit the ship with a number of guesses: ", totalGuess);
