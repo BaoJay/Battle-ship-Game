@@ -1,9 +1,20 @@
+let location1 = Math.floor(Math.random() * 5);
+let location2 = location1 + 1;
+let location3 = location1 + 2;
+console.log(location1, location2, location3);
+
+// Display the ship on the game board
+const shipLocation1 = document.querySelector(`[data-x="${location1}"]`);
+const shipLocation2 = document.querySelector(`[data-x="${location2}"]`);
+const shipLocation3 = document.querySelector(`[data-x="${location3}"]`);
+console.log(shipLocation1, shipLocation2, shipLocation3);
+[shipLocation1, shipLocation2, shipLocation3].forEach((ship) => {
+  ship.classList.add("ship");
+});
+
 const startButton = document.querySelector(".start-button");
 startButton.addEventListener("click", () => {
   alert("Let's play a game call Battle Ship!");
-  let location1 = Math.floor(Math.random() * 5);
-  let location2 = location1 + 1;
-  let location3 = location1 + 2;
   let guess;
   let totalGuess = 0;
   let hit = 0;
@@ -33,4 +44,7 @@ startButton.addEventListener("click", () => {
   }
   alert("Congratulations! You won!");
   console.log("You hit the ship with a number of guesses: ", totalGuess);
+  location1 = null;
+  location2 = null;
+  location3 = null;
 });
