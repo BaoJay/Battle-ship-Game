@@ -38,26 +38,24 @@ startButton.addEventListener("click", () => {
     totalGuess = totalGuess + 1;
     if (parseInt(guess) === location1) {
       alert("Hit!");
-      location1 = true;
+      hit += 1;
     } else if (parseInt(guess) === location2) {
       alert("Hit!");
-      location2 = true;
+      hit += 1;
     } else if (parseInt(guess) === location3) {
       alert("Hit!");
-      location3 = true;
+      hit += 1;
     } else if (guess === "q") {
       break;
     } else {
       alert("Miss!");
     }
-    isSunk =
-      (typeof location1 === "boolean" ? location1 : false) &&
-      (typeof location2 === "boolean" ? location2 : false) &&
-      (typeof location3 === "boolean" ? location3 : false);
+    isSunk = hit === 3;
   }
   if (isSunk) {
-    alert("Congratulations! You won!");
+    alert(
+      `Congratulations! You won!\nYou hit the ship with a number of guesses: ${totalGuess}`
+    );
   }
-  console.log("You hit the ship with a number of guesses: ", totalGuess);
   resetGame();
 });
