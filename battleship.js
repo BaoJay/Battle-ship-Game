@@ -31,14 +31,14 @@ startButton.addEventListener("click", () => {
   let isSunk = false;
   while (!isSunk) {
     guess = prompt("Enter a guess number");
-    if (guess === "q") {
+    if (guess === "q" || guess === null) {
       break;
     }
 
     // Validate the user input
     while (guess < 0 || guess > 6 || guess === "" || isNaN(parseInt(guess))) {
       guess = prompt("Please enter a number between 0 and 6");
-      if (guess === "q") {
+      if (guess === "q" || guess === null) {
         break;
       }
     }
@@ -52,7 +52,7 @@ startButton.addEventListener("click", () => {
     } else if (parseInt(guess) === location3) {
       alert("Hit!");
       hit += 1;
-    } else if (guess === "q") {
+    } else if (guess === "q" || guess === null) {
       break;
     } else {
       alert("Miss!");
