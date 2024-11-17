@@ -31,38 +31,38 @@ startButton.addEventListener("click", () => {
   let isSunk = false;
   while (!isSunk) {
     guess = prompt("Enter a guess number");
-    if (guess === "q" || guess === null) {
-      break;
-    }
+    console.log("guess nè: ", guess);
+    console.log("parseInt(guess) nè: ", isNaN(parseInt(guess)));
 
     // Validate the user input
-    while (guess < 0 || guess > 6 || guess === "" || isNaN(parseInt(guess))) {
-      guess = prompt("Please enter a number between 0 and 6");
-      if (guess === "q" || guess === null) {
+    if (guess === "q" || guess === null) {
+      break;
+    } else if (
+      guess < 0 ||
+      guess > 6 ||
+      guess === "" ||
+      isNaN(parseInt(guess))
+    ) {
+      alert("Please enter a number between 0 and 6");
+    } else {
+      totalGuess = totalGuess + 1;
+      if (guess == location1 || guess == location2 || guess == location3) {
+        alert("Hit!");
+        hit += 1;
+        if (hit === 3) {
+          isSunk = true;
+          alert(
+            `Congratulations! You won!\nYou hit the ship with a number of guesses: ${totalGuess}`
+          );
+        }
+      } else if (guess === "q" || guess === null) {
         break;
+      } else {
+        alert("Miss!");
       }
     }
-    totalGuess = totalGuess + 1;
-    if (parseInt(guess) === location1) {
-      alert("Hit!");
-      hit += 1;
-    } else if (parseInt(guess) === location2) {
-      alert("Hit!");
-      hit += 1;
-    } else if (parseInt(guess) === location3) {
-      alert("Hit!");
-      hit += 1;
-    } else if (guess === "q" || guess === null) {
-      break;
-    } else {
-      alert("Miss!");
-    }
-    isSunk = hit === 3;
   }
   if (isSunk) {
-    alert(
-      `Congratulations! You won!\nYou hit the ship with a number of guesses: ${totalGuess}`
-    );
   }
   resetGame();
 });
