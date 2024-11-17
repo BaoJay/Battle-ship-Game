@@ -31,9 +31,16 @@ startButton.addEventListener("click", () => {
   let isSunk = false;
   while (!isSunk) {
     guess = prompt("Enter a guess number");
-    console.log("Your guess is: ", guess);
-    while (guess < 0 || guess > 6 || guess === "") {
+    if (guess === "q") {
+      break;
+    }
+
+    // Validate the user input
+    while (guess < 0 || guess > 6 || guess === "" || isNaN(parseInt(guess))) {
       guess = prompt("Please enter a number between 0 and 6");
+      if (guess === "q") {
+        break;
+      }
     }
     totalGuess = totalGuess + 1;
     if (parseInt(guess) === location1) {
