@@ -53,8 +53,6 @@ startButton.addEventListener("click", () => {
             `Congratulations! You won!\nYou hit the ship with a number of guesses: ${totalGuess}`
           );
         }
-      } else if (guess === "q" || guess === null) {
-        break;
       } else {
         alert("Miss!");
       }
