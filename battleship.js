@@ -32,6 +32,7 @@ function isNumberic(str) {
 }
 
 const startButton = document.querySelector(".start-button");
+const clearButton = document.querySelector(".clear-button");
 startButton.addEventListener("click", () => {
   removeShip();
   randomLocation();
@@ -69,10 +70,16 @@ startButton.addEventListener("click", () => {
     }
     isSunk = hitLocation1 && hitLocation2 && hitLocation3;
   }
+  // whenever user ends the game
   if (isSunk) {
     alert(
       `Congratulations! You won!\nYou hit the ship with a number of guesses: ${totalGuess}`
     );
     displayShipLocation();
+  } else {
+    alert("You quit the game!");
   }
+});
+clearButton.addEventListener("click", () => {
+  removeShip();
 });
