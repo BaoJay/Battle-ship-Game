@@ -2,15 +2,22 @@ let location1;
 let location2;
 let location3;
 
-function resetGame() {
-  location1 = Math.floor(Math.random() * 5);
-  location2 = location1 + 1;
-  location3 = location1 + 2;
-  // Remove the ship from the game board
+// Remove the ship from the game board
+function removeShip() {
   const shipLocations = document.querySelectorAll(".ship");
+  console.log("shipLocations === ", shipLocations);
   shipLocations.forEach((ship) => {
     ship.classList.remove("ship");
   });
+}
+
+function randomLocation() {
+  location1 = Math.floor(Math.random() * 5);
+  location2 = location1 + 1;
+  location3 = location1 + 2;
+}
+
+function displayShipLocation() {
   // Display the ship on the game board
   const shipLocation1 = document.querySelector(`[data-x="${location1}"]`);
   const shipLocation2 = document.querySelector(`[data-x="${location2}"]`);
@@ -25,8 +32,9 @@ function isNumberic(str) {
 }
 
 const startButton = document.querySelector(".start-button");
-resetGame();
 startButton.addEventListener("click", () => {
+  removeShip();
+  randomLocation();
   alert("Let's play a game call Battle Ship!");
   let guess;
   let totalGuess = 0;
@@ -37,34 +45,34 @@ startButton.addEventListener("click", () => {
   let isSunk = hitLocation1 && hitLocation2 && hitLocation3;
   while (!isSunk) {
     guess = prompt("Enter a guess number");
-    console.log("guess === ", guess === "");
-    console.log("isNumberic(guess) nè: ", isNumberic(guess));
 
-    // Validate the user input
+    // Quit the game
     if (guess === "q" || guess === null) {
-      break;
+      break; // Terminate the current loop: while !isSunk
+      // Validate the user input
     } else if (guess < 0 || guess > 6 || guess === "" || !isNumberic(guess)) {
       alert("Please enter a number between 0 and 6");
-    } else if (guess == location1) {
-      hitLocation1 = true;
-      alert("Hit!");
-      totalGuess = totalGuess + 1;
-    } else if (guess == location2) {
-      hitLocation2 = true;
-      alert("Hit!");
-      totalGuess = totalGuess + 1;
-    } else if (guess == location3) {
-      hitLocation3 = true;
-      alert("Hit!");
-      totalGuess = totalGuess + 1;
     } else {
-      alert("Miss!");
       totalGuess = totalGuess + 1;
+      if (guess == location1) {
+        hitLocation1 = true;
+        alert("Hit!");
+      } else if (guess == location2) {
+        hitLocation2 = true;
+        alert("Hit!");
+      } else if (guess == location3) {
+        hitLocation3 = true;
+        alert("Hit!");
+      } else {
+        alert("Miss!");
+      }
     }
     isSunk = hitLocation1 && hitLocation2 && hitLocation3;
   }
-  alert(
-    `Congratulations! You won!\nYou hit the ship with a number of guesses: ${totalGuess}`
-  );
-  resetGame();
+  if (isSunk) {
+    alert(
+      `Congratulations! You won!\nYou hit the ship with a number of guesses: ${totalGuess}`
+    );
+    displayShipLocation();
+  }
 });
