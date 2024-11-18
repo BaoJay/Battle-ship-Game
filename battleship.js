@@ -30,8 +30,11 @@ startButton.addEventListener("click", () => {
   alert("Let's play a game call Battle Ship!");
   let guess;
   let totalGuess = 0;
-  let hit = 0;
-  let isSunk = false;
+
+  let hitLocation1 = false;
+  let hitLocation2 = false;
+  let hitLocation3 = false;
+  let isSunk = hitLocation1 && hitLocation2 && hitLocation3;
   while (!isSunk) {
     guess = prompt("Enter a guess number");
     console.log("guess === ", guess === "");
@@ -42,21 +45,26 @@ startButton.addEventListener("click", () => {
       break;
     } else if (guess < 0 || guess > 6 || guess === "" || !isNumberic(guess)) {
       alert("Please enter a number between 0 and 6");
-    } else {
+    } else if (guess == location1) {
+      hitLocation1 = true;
+      alert("Hit!");
       totalGuess = totalGuess + 1;
-      if (guess == location1 || guess == location2 || guess == location3) {
-        alert("Hit!");
-        hit += 1;
-        if (hit === 3) {
-          isSunk = true;
-          alert(
-            `Congratulations! You won!\nYou hit the ship with a number of guesses: ${totalGuess}`
-          );
-        }
-      } else {
-        alert("Miss!");
-      }
+    } else if (guess == location2) {
+      hitLocation2 = true;
+      alert("Hit!");
+      totalGuess = totalGuess + 1;
+    } else if (guess == location3) {
+      hitLocation3 = true;
+      alert("Hit!");
+      totalGuess = totalGuess + 1;
+    } else {
+      alert("Miss!");
+      totalGuess = totalGuess + 1;
     }
+    isSunk = hitLocation1 && hitLocation2 && hitLocation3;
   }
+  alert(
+    `Congratulations! You won!\nYou hit the ship with a number of guesses: ${totalGuess}`
+  );
   resetGame();
 });
